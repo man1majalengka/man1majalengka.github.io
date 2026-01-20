@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BONUS.7z</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #202124;
+            color: #e8eaed;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background-color: #202124;
+            border-bottom: 1px solid #3c4043;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            color: #e8eaed;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+
+        .menu-icon:hover {
+            background-color: #3c4043;
+        }
+
+        .app-title {
+            font-size: 20px;
+            font-weight: 400;
+            color: #e8eaed;
+            letter-spacing: 0.25px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-button {
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            color: #e8eaed;
+        }
+
+        .icon-button:hover {
+            background-color: #3c4043;
+        }
+
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #8ab4f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .profile-icon:hover {
+            opacity: 0.8;
+        }
+
+        .profile-icon .material-icons {
+            color: #202124;
+            font-size: 20px;
+        }
+
+        /* Content */
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+            min-height: calc(100vh - 73px);
+        }
+
+        .card {
+            background-color: #f1f3f4;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 420px;
+            padding: 48px 24px;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+        }
+
+        .card-title {
+            font-size: 36px;
+            font-weight: 400;
+            color: #5f6368;
+            text-align: center;
+            margin-bottom: 32px;
+            letter-spacing: -0.5px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #dadce0;
+            margin-bottom: 32px;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #5f6368;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .tab.active {
+            color: #1a73e8;
+            border-bottom-color: #1a73e8;
+        }
+
+        .tab:hover:not(.active) {
+            background-color: #e8eaed;
+        }
+
+        .tab-content {
+            min-height: 200px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(60,64,67,0.3);
+        }
+
+        .file-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fbbc04;
+            border-radius: 8px;
+        }
+
+        .file-icon .material-icons {
+            font-size: 32px;
+            color: white;
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-size: 16px;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 4px;
+            word-break: break-word;
+        }
+
+        .file-size {
+            font-size: 13px;
+            color: #5f6368;
+        }
+
+        .info-text {
+            color: #5f6368;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .download-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px 24px;
+            margin-top: 32px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+        }
+
+        .download-button:hover {
+            background-color: #1765cc;
+            box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+        }
+
+        .download-button:active {
+            background-color: #1557b0;
+        }
+
+        /* Snackbar */
+        .snackbar {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #323232;
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: bottom 0.3s;
+            z-index: 1000;
+            max-width: 90%;
+        }
+
+        .snackbar.show {
+            bottom: 24px;
+        }
+
+        .snackbar-action {
+            color: #8ab4f8;
+            font-weight: 500;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 32px 20px;
+            }
+
+            .card-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <span class="material-icons menu-icon">menu</span>
+            <div class="app-title">BONUS.7z</div>
+        </div>
+        <div class="header-right">
+            <span class="material-icons icon-button" id="headerDownloadBtn">file_download</span>
+            <span class="material-icons icon-button">more_vert</span>
+            <div class="profile-icon">
+                <span class="material-icons">person</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="card">
+            <h1 class="card-title">BONU...</h1>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="nama">Nama</div>
+                <div class="tab" data-tab="terbaru">Ter...</div>
+            </div>
+
+            <div class="tab-content">
+                <div class="file-item">
+                    <div class="file-icon">
+                        <span class="material-icons">folder_zip</span>
+                    </div>
+                    <div class="file-info">
+                        <p class="file-name">Kilal pedia.zip</p>
+                        <p class="file-size">2.5 MB</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="download-button" id="downloadBtn">
+                <span class="material-icons">file_download</span>
+                Download File
+            </button>
+        </div>
+    </div>
+
+    <!-- Snackbar -->
+    <div class="snackbar" id="snackbar">
+        <span>Anda belum login</span>
+        <span class="snackbar-action" id="loginAction">LOGIN</span>
+    </div>
+
+    <script>
+        // Tab switching
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+
+        // Get elements
+        const downloadBtn = document.getElementById('downloadBtn');
+        const headerDownloadBtn = document.getElementById('headerDownloadBtn');
+        const snackbar = document.getElementById('snackbar');
+        const loginAction = document.getElementById('loginAction');
+
+        // Function to show login notification
+        function showLoginNotification(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            snackbar.classList.add('show');
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                snackbar.classList.remove('show');
+            }, 5000);
+        }
+
+        // Download button handlers
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', showLoginNotification);
+        }
+        
+        if (headerDownloadBtn) {
+            headerDownloadBtn.addEventListener('click', showLoginNotification);
+        }
+
+        // Login action
+        loginAction.addEventListener('click', () => {
+            // Redirect to login page (replace with your actual login URL)
+            window.location.href = '../../6573636562796b696c616c/log/auth/';
+        });
+
+        // Hide snackbar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!snackbar.contains(e.target) && e.target !== downloadBtn && e.target !== headerDownloadBtn) {
+                snackbar.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
